@@ -13,14 +13,11 @@ const baseController = async (req, res) => {
       });
 
     const prediction = response.body.classifications[0].prediction
-    console.log(prediction)
-
-    prompt = generativePrompts[0][prediction]
-    console.log(prompt)
+    console.log("Prediction: " + prediction)
 
     const generateResponse = await cohere.generate({
         model: 'xlarge',
-        prompt: prompt,
+        prompt: generativePrompts[0][prediction],
         max_tokens: 500,
         temperature: 0.5,
         k: 0,
