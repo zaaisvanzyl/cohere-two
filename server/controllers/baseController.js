@@ -1,5 +1,5 @@
 const { baseClassificationData } = require('../data/baseClassificationData');
-const { igCaption } = require('../data/igCaption');
+const { generativePrompts } = require('../data/generativePrompts');
 
 
 const cohere = require('cohere-ai');
@@ -15,9 +15,8 @@ const baseController = async (req, res) => {
     const prediction = response.body.classifications[0].prediction
     console.log(prediction)
 
-    if (prediction === 'igCaption') {
-        prompt = igCaption
-    }
+    prompt = generativePrompts[0][prediction]
+    console.log(prompt)
 
     const generateResponse = await cohere.generate({
         model: 'xlarge',
