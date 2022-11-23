@@ -13,7 +13,7 @@ There might be an opportunity for the community to "crowdsource" a wide variety 
 
 **To start the server:**
 
-cd server
+cd server;
 node server.js
 
 Within postman, send a get request to localhost:4009/api/ with the following body (raw JSON):
